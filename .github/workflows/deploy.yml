@@ -1,0 +1,23 @@
+name: Deploy to server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Deploy Webhook
+        run: |
+          echo "🚀 Starting deployment to server..."
+          response=$(curl -k -s -o /dev/null -w "%{http_code}" -X GET "${{ secrets.AAPANEL_WEBHOOK }}")
+          
+          if [ "$response" = "200" ]; then
+            echo "✅ Deploy webhook triggered successfully!"
+          else
+            echo "❌ Deploy webhook failed with status code: $response"
+            exit 1
+          fi
