@@ -60,11 +60,11 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 flex items-center gap-3">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Samarthwave Logo"
-                width={48}
-                height={48}
-                className="h-11 w-auto object-contain"
+                width={56}
+                height={56}
+                className="h-14 w-auto object-contain rounded-full"
                 priority
               />
               <div className="flex flex-col justify-center">

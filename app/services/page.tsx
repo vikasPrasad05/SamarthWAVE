@@ -1,46 +1,60 @@
-import { Building2, Utensils, Zap, Users, ShieldCheck, Briefcase } from "lucide-react";
+"use client";
+
+import { Building2, Utensils, Zap, Users, ShieldCheck, Briefcase, Wrench, Settings, Star, Loader2 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
+
+const iconMap: Record<string, React.ReactNode> = {
+  Briefcase: <Briefcase className="w-8 h-8 text-white" />,
+  Utensils: <Utensils className="w-8 h-8 text-white" />,
+  Zap: <Zap className="w-8 h-8 text-white" />,
+  ShieldCheck: <ShieldCheck className="w-8 h-8 text-white" />,
+  Users: <Users className="w-8 h-8 text-white" />,
+  Building2: <Building2 className="w-8 h-8 text-white" />,
+  Wrench: <Wrench className="w-8 h-8 text-white" />,
+  Settings: <Settings className="w-8 h-8 text-white" />,
+  Star: <Star className="w-8 h-8 text-white" />
+};
+
+type ServiceItem = {
+  id?: string;
+  title: string;
+  description: string;
+  icon: string | React.ReactNode;
+  bg_image?: string;
+  bgImage?: string; // fallback
+};
 
 export default function Services() {
-  const services = [
-    {
-      icon: <Briefcase className="w-8 h-8 text-white" />,
-      title: "Housekeeping Services",
-      description: "Professional cleaning and upkeep services designed for corporate and commercial spaces to maintain a pristine environment.",
-      bgImage: "/images/housekeeping_bg.png"
-    },
-    {
-      icon: <Utensils className="w-8 h-8 text-white" />,
-      title: "Pantry Management",
-      description: "Efficient and hygienic food and beverage service operations for your office, ensuring employee satisfaction and health.",
-      bgImage: "/images/pantry_bg.png"
-    },
-    {
-      icon: <Zap className="w-8 h-8 text-white" />,
-      title: "Technical Services",
-      description: "Comprehensive maintenance and troubleshooting for your facility's technical and operational infrastructure.",
-      bgImage: "/images/technical_bg.png"
-    },
-    {
-      icon: <ShieldCheck className="w-8 h-8 text-white" />,
-      title: "Carpet Cleaning",
-      description: "Deep cleaning and maintenance of carpets to prolong lifespan and improve indoor air quality.",
-      bgImage: "/images/carpet_bg.png"
-    },
-    {
-      icon: <Users className="w-8 h-8 text-white" />,
-      title: "Manpower Supply",
-      description: "Providing skilled, semi-skilled, and unskilled workforce tailored to your organization's specific requirements.",
-      bgImage: "/images/manpower_bg.png"
-    },
-    {
-      icon: <Building2 className="w-8 h-8 text-white" />,
-      title: "Facility Management & MEP",
-      description: "Integrated facility management including Mechanical, Electrical, and Plumbing (MEP) services for seamless operations.",
-      bgImage: "/images/mep_bg.png"
-    },
-  ];
+  const [services, setServices] = useState<ServiceItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
+
+  const fetchServices = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('services')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      if (error) {
+        console.warn("Could not fetch services from DB.", error);
+        setServices([]);
+      } else if (data) {
+        setServices(data);
+      }
+    } catch (error) {
+      console.error(error);
+      setServices([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen pt-24 pb-12 bg-gray-50">
@@ -60,33 +74,44 @@ export default function Services() {
             <h2 className="text-3xl font-bold text-gray-900">Integrated Facility Solutions</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, i) => (
-              <div key={i} className="group relative rounded-3xl shadow-xl overflow-hidden hover:-translate-y-2 transition-transform duration-300 flex flex-col h-[400px]">
-                {/* Background Image */}
-                <Image 
-                  src={service.bgImage}
-                  alt={service.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/40 group-hover:bg-gray-900/70 transition-colors duration-300" />
-                
-                {/* Content */}
-                <div className="relative z-10 p-8 flex flex-col h-full text-white">
-                  <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 border border-white/20">
-                    {service.icon}
+          {loading ? (
+            <div className="flex justify-center py-20">
+              <Loader2 className="w-10 h-10 animate-spin text-blue-600" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, i) => {
+                const bgImage = service.bg_image || service.bgImage || "/images/placeholder.jpg";
+                const iconElement = typeof service.icon === 'string' ? (iconMap[service.icon] || <Star className="w-8 h-8 text-white" />) : service.icon;
+
+                return (
+                  <div key={service.id || i} className="group relative rounded-3xl shadow-xl overflow-hidden hover:-translate-y-2 transition-transform duration-300 flex flex-col h-[400px]">
+                    {/* Background Image */}
+                    <Image 
+                      src={bgImage}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/40 group-hover:bg-gray-900/70 transition-colors duration-300" />
+                    
+                    {/* Content */}
+                    <div className="relative z-10 p-8 flex flex-col h-full text-white">
+                      <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 border border-white/20">
+                        {iconElement}
+                      </div>
+                      <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+                      <p className="text-gray-300 leading-relaxed mb-6 flex-grow">{service.description}</p>
+                      <Link href="/contact-us" className="text-blue-400 font-medium hover:text-blue-300 flex items-center gap-2 mt-auto">
+                        Enquire Now
+                      </Link>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                  <p className="text-gray-300 leading-relaxed mb-6 flex-grow">{service.description}</p>
-                  <Link href="/contact-us" className="text-blue-400 font-medium hover:text-blue-300 flex items-center gap-2 mt-auto">
-                    Enquire Now
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* Call to action */}

@@ -1,6 +1,7 @@
 "use client"
 import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -9,9 +10,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-6 text-white uppercase tracking-wide">
-              SAMARTHWAVE
-            </h3>
+            <div className="flex items-center gap-3 mb-6">
+              <Image 
+                src="/logo.png" 
+                alt="Samarthwave Logo" 
+                width={48} 
+                height={48} 
+                className="w-12 h-12 object-contain rounded-full"
+              />
+              <h3 className="text-xl font-bold text-white uppercase tracking-wide leading-tight">
+                SAMARTHWAVE<br/>
+                <span className="text-[10px] text-blue-500 tracking-[0.2em] font-medium">HOSPITALITY & SERVICES</span>
+              </h3>
+            </div>
             <p className="text-sm leading-relaxed mb-6">
               Leading provider of integrated facility management solutions with over 16 years of industry experience. Excellence in Service | Trusted Partner
             </p>

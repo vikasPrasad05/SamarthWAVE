@@ -3,16 +3,26 @@
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { useState } from "react";
 
+import { Turnstile } from '@marsidev/react-turnstile';
+
 export default function ContactUs() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!turnstileToken) {
+      alert("Please verify that you are human first.");
+      return;
+    }
+    
     setIsSubmitting(true);
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       alert("Message sent successfully! We will get back to you soon.");
+      setTurnstileToken("");
     }, 1500);
   };
 
@@ -123,9 +133,17 @@ export default function ContactUs() {
                 <textarea required id="message" rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all resize-none" placeholder="Tell us about your requirements..."></textarea>
               </div>
 
+              {/* Cloudflare Turnstile */}
+              <div className="flex justify-center my-4">
+                <Turnstile 
+                  siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'} 
+                  onSuccess={(token) => setTurnstileToken(token)}
+                />
+              </div>
+
               <button 
                 type="submit" 
-                disabled={isSubmitting}
+                disabled={isSubmitting || !turnstileToken}
                 className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
