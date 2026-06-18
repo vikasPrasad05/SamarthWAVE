@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 export default function WhatsAppButton() {
-  const phoneNumber = "919227155591"; // Added country code
+  const phoneNumber = "919510401702"; // Added country code
   const message = "Hi, I'm interested in your services";
 
   return (

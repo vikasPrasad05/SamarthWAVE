@@ -168,9 +168,9 @@ export default function Contact() {
                   <div className="break-words max-w-full">
                     <p className="font-semibold mb-1">Head Office</p>
                     <p className="text-gray-600 text-sm sm:text-base break-words max-w-full">
-                      SH/1, MADHAV PARK APPT <br />
-                      JAY BHARAT NAGAR – CHHIRI<br />
-                      PARDI, VALSAD, GUJARAT
+                      C6/82 old c type Koparli Rd<br />
+                      Near R k Desai College<br />
+                      Vapi 396195
                     </p>
                   </div>
                 </div>
@@ -180,10 +180,10 @@ export default function Contact() {
                   <div className="break-words max-w-full">
                     <p className="font-semibold mb-1">Phone</p>
                     <a 
-                      href="tel:+919227155591" 
+                      href="tel:+919510401702" 
                       className="text-gray-600 hover:text-primary text-sm sm:text-base break-all"
                     >
-                      +91 92271 55591
+                      +91 95104 01702
                     </a>
                   </div>
                 </div>

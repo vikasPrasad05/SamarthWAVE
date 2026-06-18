@@ -100,15 +100,15 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
                 <p className="text-sm leading-relaxed">
-                  SH/1, MADHAV PARK APPT<br />
-                  JAY BHARAT NAGAR – CHHIRI<br />
-                  PARDI, VALSAD, GUJARAT
+                  C6/82 old c type Koparli Rd<br />
+                  Near R k Desai College<br />
+                  Vapi 396195
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                <a href="tel:+919227155591" className="text-sm hover:text-blue-400 transition-colors">
-                  +91 92271 55591
+                <a href="tel:+919510401702" className="text-sm hover:text-blue-400 transition-colors">
+                  +91 95104 01702
                 </a>
               </div>
               <div className="flex items-center gap-3">

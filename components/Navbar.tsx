@@ -39,9 +39,9 @@ export default function Navbar() {
               <Mail className="w-4 h-4" />
               <span className="hidden sm:inline">info@samarthwavehospitality.com</span>
             </a>
-            <a href="tel:+919227155591" className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+            <a href="tel:+919510401702" className="flex items-center gap-2 hover:text-blue-400 transition-colors">
               <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">+91 92271 55591</span>
+              <span className="hidden sm:inline">+91 95104 01702</span>
             </a>
           </div>
           <div className="flex items-center gap-4">

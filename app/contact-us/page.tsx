@@ -53,7 +53,7 @@ export default function ContactUs() {
                 <div>
                   <h4 className="text-lg font-bold text-gray-900 mb-1">Phone</h4>
                   <div className="flex flex-col gap-1">
-                    <a href="tel:+919227155591" className="text-gray-600 hover:text-blue-600 text-lg">+91 92271 55591</a>
+                    <a href="tel:+919510401702" className="text-gray-600 hover:text-blue-600 text-lg">+91 95104 01702</a>
                   </div>
                 </div>
               </div>
@@ -77,9 +77,9 @@ export default function ContactUs() {
                 <div>
                   <h4 className="text-lg font-bold text-gray-900 mb-1">Head Office</h4>
                   <p className="text-gray-600 text-lg">
-                    SH/1, MADHAV PARK APPT<br />
-                    JAY BHARAT NAGAR – CHHIRI<br />
-                    PARDI, VALSAD, GUJARAT
+                    C6/82 old c type Koparli Rd<br />
+                    Near R k Desai College<br />
+                    Vapi 396195
                   </p>
                 </div>
               </div>
@@ -159,7 +159,7 @@ export default function ContactUs() {
         <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Location</h3>
         <div className="bg-white rounded-3xl p-2 md:p-4 shadow-xl shadow-gray-200/50 border border-gray-100 h-[450px]">
           <iframe 
-            src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Madhav%20Park%20Appt,%20Jay%20Bharat%20Nagar,%20Chhiri,%20Pardi,%20Valsad,%20Gujarat&t=&z=15&ie=UTF8&iwloc=B&output=embed"
+            src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=C6%2F82%20old%20c%20type%20Koparli%20Rd%20Near%20R%20k%20Desai%20College%20vapi%20396195&t=&z=15&ie=UTF8&iwloc=B&output=embed"
             width="100%" 
             height="100%" 
             style={{ border: 0, borderRadius: '1rem' }} 
