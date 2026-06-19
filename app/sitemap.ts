@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://samarthwave.com'; // Adjust to your actual domain
+  const baseUrl = 'https://samarthwavehospitality.com'; // Adjust to your actual domain
 
   return [
     {

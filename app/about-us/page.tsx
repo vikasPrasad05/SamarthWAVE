@@ -1,6 +1,12 @@
-import { ShieldCheck, Target, HeartHandshake, Users } from "lucide-react";
+import { ShieldCheck, Target, HeartHandshake, Users, Search, GraduationCap, Shield, UserPlus } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | SAMARTHWAVE HOSPITALITY & SERVICES",
+  description: "Learn about SAMARTHWAVE's 16+ years of consolidated industry experience in facility management. Discover our ideology, processes, and commitment to excellence.",
+};
 
 export default function AboutUs() {
   return (
@@ -52,7 +58,7 @@ export default function AboutUs() {
       <div className="bg-gray-900 text-white mt-24 py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Ideology & Process</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Ideology</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">The principles that guide everything we do.</p>
           </div>
           
@@ -84,6 +90,140 @@ export default function AboutUs() {
               </div>
               <h3 className="text-xl font-bold mb-3">Fair Culture</h3>
               <p className="text-gray-400">Empowering our team members through a positive environment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Engagement Model */}
+      <div className="py-24 bg-gray-50 px-4 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Engagement Model</h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {/* Soft Service Model */}
+            <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-blue-800 mb-8 pb-4 border-b border-gray-100">Soft Service Model</h3>
+              <ul className="space-y-4">
+                {[
+                  "Housekeeping & Pantry",
+                  "Security & Fire Safety",
+                  "Pest Control",
+                  "Landscaping & Horticulture",
+                  "Façade Cleaning",
+                  "MEP Services",
+                  "Society Management",
+                  "Office Support Services",
+                  "Chair & Carpet Shampooing",
+                  "Project Cleaning"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-center text-gray-700">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-4 shrink-0"></span>
+                    <span className="text-lg">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Staffing Model */}
+            <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-blue-800 mb-8 pb-4 border-b border-gray-100">Staffing Model</h3>
+              <ul className="space-y-4">
+                {[
+                  "Recruitment",
+                  "Training",
+                  "Payroll Management",
+                  "Compliance Management",
+                  "Supervision & Control",
+                  "Administrative Support",
+                  "Direct Employment Relationship",
+                  "Employee Life Cycle Management"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-center text-gray-700">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-4 shrink-0"></span>
+                    <span className="text-lg">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Process Orientation */}
+      <div className="py-24 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Process Orientation</h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Sourcing */}
+            <div className="bg-blue-50/50 rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-300 border border-blue-100/50">
+              <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
+                <Search className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Sourcing</h3>
+              <ul className="space-y-3">
+                {["Site Survey", "NGO Tie-up", "Database", "Referrals"].map((item, idx) => (
+                  <li key={idx} className="text-gray-600 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Training & Development */}
+            <div className="bg-blue-50/50 rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-300 border border-blue-100/50">
+              <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-600/30">
+                <GraduationCap className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Training & Development</h3>
+              <ul className="space-y-3">
+                {["Job Knowledge", "Technical Skills", "Soft Skills"].map((item, idx) => (
+                  <li key={idx} className="text-gray-600 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-3 shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Employment */}
+            <div className="bg-blue-50/50 rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-300 border border-blue-100/50">
+              <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
+                <Shield className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Employment</h3>
+              <ul className="space-y-3">
+                {["100% Compliance", "Statutory Benefits"].map((item, idx) => (
+                  <li key={idx} className="text-gray-600 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Empowerment */}
+            <div className="bg-blue-50/50 rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-300 border border-blue-100/50">
+              <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-600/30">
+                <UserPlus className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Empowerment</h3>
+              <ul className="space-y-3">
+                {["Financial Security", "Recognition & Status", "Family Benefits"].map((item, idx) => (
+                  <li key={idx} className="text-gray-600 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-3 shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
