@@ -7,28 +7,45 @@ export interface EmailData {
   message: string;
 }
 
-// Create transporter
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT || "587"),
-  secure: process.env.SMTP_PORT === "465", // true for 465, false for other ports
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+// Create transporter only if SMTP_HOST is configured
+const hasSmtpConfig = !!process.env.SMTP_HOST;
 
-// Verify transporter on startup
-transporter.verify((error, success) => {
-  if (error) {
-    console.error("SMTP connection error:", error);
-  } else {
-    console.log("SMTP server is ready to send emails");
-  }
-});
+const transporter = hasSmtpConfig
+  ? nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || "587"),
+      secure: process.env.SMTP_PORT === "465",
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    })
+  : null;
+
+// Verify transporter on startup if configured
+if (transporter) {
+  transporter.verify((error, success) => {
+    if (error) {
+      console.error("SMTP connection error:", error);
+    } else {
+      console.log("SMTP server is ready to send emails");
+    }
+  });
+} else {
+  console.log("SMTP_HOST not configured. Email sending will be simulated in console.");
+}
 
 export async function sendContactEmail(data: EmailData) {
   const { name, email, phone, message } = data;
+
+  if (!transporter) {
+    console.log("=== MOCK EMAIL SENT ===");
+    console.log(`To Business (${process.env.BUSINESS_EMAIL || 'not configured'}): New Contact Form Submission from ${name}`);
+    console.log(`To Customer (${email}): Thank you for contacting SAMARTHWAVE`);
+    console.log("Message Content:", message);
+    console.log("========================");
+    return;
+  }
 
   const htmlContent = `
     <!DOCTYPE html>
@@ -77,7 +94,7 @@ export async function sendContactEmail(data: EmailData) {
   `;
 
   // Send email to business
-  await transporter.sendMail({
+  await transporter!.sendMail({
     from: `"SAMARTHWAVE Contact Form" <${process.env.SMTP_USER}>`,
     to: process.env.BUSINESS_EMAIL,
     subject: `New Contact Form Submission from ${name}`,
@@ -86,7 +103,7 @@ export async function sendContactEmail(data: EmailData) {
   });
 
   // Send auto-reply to customer
-  await transporter.sendMail({
+  await transporter!.sendMail({
     from: `"SAMARTHWAVE HOSPITALITY" <${process.env.SMTP_USER}>`,
     to: email,
     subject: "Thank you for contacting SAMARTHWAVE",

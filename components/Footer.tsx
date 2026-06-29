@@ -20,7 +20,7 @@ export default function Footer() {
               />
               <h3 className="text-xl font-bold text-white uppercase tracking-wide leading-tight">
                 SAMARTHWAVE<br/>
-                <span className="text-[10px] text-blue-500 tracking-[0.2em] font-medium">HOSPITALITY & SERVICES</span>
+                <span className="text-[10px] text-emerald-500 tracking-[0.2em] font-medium">HOSPITALITY & SERVICES</span>
               </h3>
             </div>
             <p className="text-sm leading-relaxed mb-6">
@@ -39,22 +39,22 @@ export default function Footer() {
             <h4 className="text-lg font-bold mb-6 text-white uppercase tracking-wide">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/about-us" className="text-sm hover:text-blue-400 transition-colors flex items-center">
+                <Link href="/about-us" className="text-sm hover:text-emerald-400 transition-colors flex items-center">
                   <span className="mr-2">›</span> About Us
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm hover:text-blue-400 transition-colors flex items-center">
+                <Link href="/services" className="text-sm hover:text-emerald-400 transition-colors flex items-center">
                   <span className="mr-2">›</span> Our Services
                 </Link>
               </li>
               <li>
-                <Link href="/#clients" className="text-sm hover:text-blue-400 transition-colors flex items-center">
+                <Link href="/#clients" className="text-sm hover:text-emerald-400 transition-colors flex items-center">
                   <span className="mr-2">›</span> Our Clients
                 </Link>
               </li>
               <li>
-                <Link href="/contact-us" className="text-sm hover:text-blue-400 transition-colors flex items-center">
+                <Link href="/contact-us" className="text-sm hover:text-emerald-400 transition-colors flex items-center">
                   <span className="mr-2">›</span> Contact Us
                 </Link>
               </li>
@@ -66,27 +66,27 @@ export default function Footer() {
             <h4 className="text-lg font-bold mb-6 text-white uppercase tracking-wide">Our Services</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/services" className="text-sm hover:text-blue-400 transition-colors flex items-center">
+                <Link href="/services" className="text-sm hover:text-emerald-400 transition-colors flex items-center">
                   <span className="mr-2">›</span> Housekeeping Services
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm hover:text-blue-400 transition-colors flex items-center">
+                <Link href="/services" className="text-sm hover:text-emerald-400 transition-colors flex items-center">
                   <span className="mr-2">›</span> Pantry Management
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm hover:text-blue-400 transition-colors flex items-center">
+                <Link href="/services" className="text-sm hover:text-emerald-400 transition-colors flex items-center">
                   <span className="mr-2">›</span> Technical Services
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm hover:text-blue-400 transition-colors flex items-center">
+                <Link href="/services" className="text-sm hover:text-emerald-400 transition-colors flex items-center">
                   <span className="mr-2">›</span> Manpower Supply
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm hover:text-blue-400 transition-colors flex items-center">
+                <Link href="/services" className="text-sm hover:text-emerald-400 transition-colors flex items-center">
                   <span className="mr-2">›</span> MEP Services
                 </Link>
               </li>
@@ -98,7 +98,7 @@ export default function Footer() {
             <h4 className="text-lg font-bold mb-6 text-white uppercase tracking-wide">Contact Info</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
                 <p className="text-sm leading-relaxed">
                   C6/82 old c type Koparli Rd<br />
                   Near R k Desai College<br />
@@ -106,14 +106,14 @@ export default function Footer() {
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                <a href="tel:+919510401702" className="text-sm hover:text-blue-400 transition-colors">
+                <Phone className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                <a href="tel:+919510401702" className="text-sm hover:text-emerald-400 transition-colors">
                   +91 95104 01702
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                <a href="mailto:info@samarthwavehospitality.com" className="text-sm hover:text-blue-400 transition-colors break-all">
+                <Mail className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                <a href="mailto:info@samarthwavehospitality.com" className="text-sm hover:text-emerald-400 transition-colors break-all">
                   info@samarthwavehospitality.com
                 </a>
               </div>
@@ -130,14 +130,14 @@ export default function Footer() {
               </p>
               <span className="hidden md:inline text-gray-600">|</span>
               <p className="text-gray-400">
-                Designed & Developed by <a href="https://www.davlabs.in" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">DAVLabs</a>
+                Designed & Developed by <a href="https://www.davlabs.in" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium">DAVLabs</a>
               </p>
             </div>
             <div className="flex gap-6 text-sm">
-              <Link href="/privacy-policy" className="hover:text-blue-400 transition-colors">
+              <Link href="/privacy-policy" className="hover:text-emerald-400 transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms-of-service" className="hover:text-blue-400 transition-colors">
+              <Link href="/terms-of-service" className="hover:text-emerald-400 transition-colors">
                 Terms of Service
               </Link>
             </div>

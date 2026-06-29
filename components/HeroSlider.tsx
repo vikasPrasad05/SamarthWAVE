@@ -14,6 +14,12 @@ const slides = [
     description: "Excellence in Integrated Facility Management. Delivering 16+ years of uncompromising quality and professional care."
   },
   {
+    image: "/images/carwash_bg.png",
+    title: "ECO-FRIENDLY",
+    subtitle: "Waterless Carwash",
+    description: "Premium, waterless car detailing and wash services that conserve water while delivering a showroom-grade shine."
+  },
+  {
     image: "/images/pantry_bg.png",
     title: "PREMIUM",
     subtitle: "Pantry Management",
@@ -107,7 +113,7 @@ export default function HeroSlider() {
               initial={{ opacity: 0, width: 0 }}
               animate={{ opacity: 1, width: "4rem" }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="h-1 bg-blue-500 mb-8 rounded-full opacity-90" 
+              className="h-1 bg-emerald-500 mb-8 rounded-full opacity-90" 
             />
             
             <motion.p 

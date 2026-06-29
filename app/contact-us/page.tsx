@@ -29,9 +29,9 @@ export default function ContactUs() {
   return (
     <div className="min-h-screen pt-24 pb-12 bg-white">
       {/* Header */}
-      <div className="bg-gradient-to-br from-blue-900 to-indigo-900 py-16 px-4 text-center text-white mb-16">
+      <div className="bg-gradient-to-br from-emerald-900 to-teal-900 py-16 px-4 text-center text-white mb-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-        <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+        <p className="text-xl text-emerald-100 max-w-2xl mx-auto">
           Ready to elevate your facility management? We are here to help. Reach out to us today.
         </p>
       </div>
@@ -47,32 +47,32 @@ export default function ContactUs() {
             
             <div className="space-y-8">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-gray-900 mb-1">Phone</h4>
                   <div className="flex flex-col gap-1">
-                    <a href="tel:+919510401702" className="text-gray-600 hover:text-blue-600 text-lg">+91 95104 01702</a>
+                    <a href="tel:+919510401702" className="text-gray-600 hover:text-emerald-600 text-lg">+91 95104 01702</a>
                   </div>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-gray-900 mb-1">Email</h4>
-                  <a href="mailto:info@samarthwavehospitality.com" className="text-gray-600 hover:text-blue-600 text-lg">
+                  <a href="mailto:info@samarthwavehospitality.com" className="text-gray-600 hover:text-emerald-600 text-lg">
                     info@samarthwavehospitality.com
                   </a>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-gray-900 mb-1">Head Office</h4>
@@ -85,8 +85,8 @@ export default function ContactUs() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-gray-900 mb-1">Business Hours</h4>
@@ -103,22 +103,22 @@ export default function ContactUs() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                  <input required type="text" id="firstName" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all" placeholder="John" />
+                  <input required type="text" id="firstName" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all" placeholder="John" />
                 </div>
                 <div>
                   <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                  <input required type="text" id="lastName" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all" placeholder="Doe" />
+                  <input required type="text" id="lastName" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all" placeholder="Doe" />
                 </div>
               </div>
               
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                <input required type="email" id="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all" placeholder="john@example.com" />
+                <input required type="email" id="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all" placeholder="john@example.com" />
               </div>
 
               <div>
                 <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">Interested Service</label>
-                <select id="service" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all bg-white">
+                <select id="service" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all bg-white">
                   <option>Facility Management</option>
                   <option>Housekeeping Services</option>
                   <option>Manpower Supply</option>
@@ -130,7 +130,7 @@ export default function ContactUs() {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                <textarea required id="message" rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all resize-none" placeholder="Tell us about your requirements..."></textarea>
+                <textarea required id="message" rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all resize-none" placeholder="Tell us about your requirements..."></textarea>
               </div>
 
               {/* Cloudflare Turnstile */}
@@ -144,7 +144,7 @@ export default function ContactUs() {
               <button 
                 type="submit" 
                 disabled={isSubmitting || !turnstileToken}
-                className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
                 {!isSubmitting && <Send className="w-5 h-5" />}

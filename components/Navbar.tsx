@@ -35,20 +35,20 @@ export default function Navbar() {
       <div className={`bg-gray-900 text-white transition-all duration-300 ${isScrolled ? 'h-0 overflow-hidden py-0' : 'py-2'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
-            <a href="mailto:info@samarthwavehospitality.com" className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+            <a href="mailto:info@samarthwavehospitality.com" className="flex items-center gap-2 hover:text-emerald-400 transition-colors">
               <Mail className="w-4 h-4" />
               <span className="hidden sm:inline">info@samarthwavehospitality.com</span>
             </a>
-            <a href="tel:+919510401702" className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+            <a href="tel:+919510401702" className="flex items-center gap-2 hover:text-emerald-400 transition-colors">
               <Phone className="w-4 h-4" />
               <span className="hidden sm:inline">+91 95104 01702</span>
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-blue-400 transition-colors"><Facebook className="w-4 h-4" /></a>
-            <a href="#" className="hover:text-blue-400 transition-colors"><Twitter className="w-4 h-4" /></a>
-            <a href="#" className="hover:text-blue-400 transition-colors"><Instagram className="w-4 h-4" /></a>
-            <a href="#" className="hover:text-blue-400 transition-colors"><Linkedin className="w-4 h-4" /></a>
+            <a href="#" className="hover:text-emerald-400 transition-colors"><Facebook className="w-4 h-4" /></a>
+            <a href="#" className="hover:text-emerald-400 transition-colors"><Twitter className="w-4 h-4" /></a>
+            <a href="#" className="hover:text-emerald-400 transition-colors"><Instagram className="w-4 h-4" /></a>
+            <a href="#" className="hover:text-emerald-400 transition-colors"><Linkedin className="w-4 h-4" /></a>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function Navbar() {
                 <span className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-wider uppercase leading-none">
                   Samarthwave
                 </span>
-                <span className="text-[10px] md:text-xs font-bold text-blue-600 tracking-[0.2em] uppercase mt-1">
+                <span className="text-[10px] md:text-xs font-bold text-emerald-600 tracking-[0.2em] uppercase mt-1">
                   Hospitality & Services
                 </span>
               </div>
@@ -90,14 +90,14 @@ export default function Navbar() {
                     href={item.href}
                     onMouseEnter={() => setHoveredPath(item.href)}
                     className={`relative px-4 py-2 font-medium text-[14px] uppercase tracking-wide transition-colors z-10 ${
-                      isActive || hoveredPath === item.href ? "text-blue-600" : "text-gray-700 hover:text-blue-600"
+                      isActive || hoveredPath === item.href ? "text-emerald-600" : "text-gray-700 hover:text-emerald-600"
                     }`}
                   >
                     <span className="relative z-10">{item.name}</span>
                     {hoveredPath === item.href && (
                       <motion.div
                         layoutId="nav-hover-pill"
-                        className="absolute inset-0 bg-blue-50 rounded-md -z-0"
+                        className="absolute inset-0 bg-emerald-50 rounded-md -z-0"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -109,7 +109,7 @@ export default function Navbar() {
               })}
               <Link
                 href="/contact-us"
-                className="bg-blue-600 text-white px-6 py-2.5 rounded hover:bg-blue-700 transition-colors font-medium uppercase tracking-wide text-sm"
+                className="bg-emerald-600 text-white px-6 py-2.5 rounded hover:bg-emerald-700 transition-colors font-medium uppercase tracking-wide text-sm"
               >
                 Get Quote
               </Link>
@@ -119,7 +119,7 @@ export default function Navbar() {
             <div className="md:hidden flex items-center">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-gray-800 hover:text-blue-600 focus:outline-none"
+                className="text-gray-800 hover:text-emerald-600 focus:outline-none"
               >
                 {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -139,7 +139,7 @@ export default function Navbar() {
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`block px-3 py-3 font-medium uppercase tracking-wide text-sm border-b border-gray-50 ${
-                      isActive ? "text-blue-600" : "text-gray-800 hover:text-blue-600"
+                      isActive ? "text-emerald-600" : "text-gray-800 hover:text-emerald-600"
                     }`}
                   >
                     {item.name}
@@ -149,7 +149,7 @@ export default function Navbar() {
               <Link
                 href="/contact-us"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block mt-4 text-center bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 font-medium uppercase tracking-wide text-sm"
+                className="block mt-4 text-center bg-emerald-600 text-white px-6 py-3 rounded hover:bg-emerald-700 font-medium uppercase tracking-wide text-sm"
               >
                 Get Quote
               </Link>

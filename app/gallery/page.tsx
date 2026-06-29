@@ -62,7 +62,7 @@ export default function GalleryPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {loading ? (
           <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
           </div>
         ) : images.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
@@ -81,7 +81,7 @@ export default function GalleryPage() {
                     onClick={() => setSelectedCategory(cat)}
                     className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                       selectedCategory === cat 
-                        ? "bg-blue-600 text-white shadow-md" 
+                        ? "bg-emerald-600 text-white shadow-md" 
                         : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
                     }`}
                   >
@@ -103,7 +103,7 @@ export default function GalleryPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                     <div className="p-5 w-full">
-                      <span className="inline-block px-2 py-1 bg-blue-500/90 rounded text-[10px] font-bold tracking-wider uppercase text-white mb-2">
+                      <span className="inline-block px-2 py-1 bg-emerald-500/90 rounded text-[10px] font-bold tracking-wider uppercase text-white mb-2">
                         {img.category || "General"}
                       </span>
                       <p className="text-white font-medium truncate text-lg">{img.title || "SAMARTHWAVE"}</p>

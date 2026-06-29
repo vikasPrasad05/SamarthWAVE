@@ -32,7 +32,8 @@ const AVAILABLE_ICONS = [
   "Building2",
   "Wrench",
   "Settings",
-  "Star"
+  "Star",
+  "Sparkles"
 ];
 
 const CATEGORIES = [
@@ -164,7 +165,7 @@ function AdminServices() {
       <div className="lg:col-span-1">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 sticky top-28">
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <Upload className="w-5 h-5 text-blue-600" /> Add New Service
+            <Upload className="w-5 h-5 text-emerald-600" /> Add New Service
           </h2>
           
           <form onSubmit={handleUpload} className="space-y-5">
@@ -175,7 +176,7 @@ function AdminServices() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
-                className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
                 placeholder="e.g. Housekeeping Services"
               />
             </div>
@@ -187,7 +188,7 @@ function AdminServices() {
                 onChange={(e) => setDescription(e.target.value)}
                 required
                 rows={3}
-                className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all resize-none"
+                className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 outline-none transition-all resize-none"
                 placeholder="Service description..."
               />
             </div>
@@ -197,7 +198,7 @@ function AdminServices() {
               <select
                 value={iconName}
                 onChange={(e) => setIconName(e.target.value)}
-                className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
               >
                 {AVAILABLE_ICONS.map(icon => (
                   <option key={icon} value={icon}>{icon}</option>
@@ -212,14 +213,14 @@ function AdminServices() {
                 ref={fileInputRef}
                 accept="image/*"
                 required
-                className="w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+                className="w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer"
               />
             </div>
 
             <button 
               type="submit" 
               disabled={uploading}
-              className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {uploading ? (
                 <><Loader2 className="w-5 h-5 animate-spin" /> Adding...</>
@@ -234,12 +235,12 @@ function AdminServices() {
       <div className="lg:col-span-2">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <List className="w-5 h-5 text-blue-600" /> Manage Services
+            <List className="w-5 h-5 text-emerald-600" /> Manage Services
           </h2>
           
           {loading ? (
             <div className="flex justify-center items-center py-12">
-              <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
+              <Loader2 className="w-8 h-8 text-emerald-600 animate-spin" />
             </div>
           ) : services.length === 0 ? (
             <div className="text-center py-12 bg-gray-50 rounded-xl border border-dashed border-gray-300">
@@ -406,7 +407,7 @@ function AdminGallery() {
       <div className="lg:col-span-1">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 sticky top-28">
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <Upload className="w-5 h-5 text-blue-600" /> Upload New Photo
+            <Upload className="w-5 h-5 text-emerald-600" /> Upload New Photo
           </h2>
           
           <form onSubmit={handleUpload} className="space-y-5">
@@ -416,7 +417,7 @@ function AdminGallery() {
                 type="text" 
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
                 placeholder="e.g. Office Cleaning"
               />
             </div>
@@ -426,7 +427,7 @@ function AdminGallery() {
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
               >
                 {CATEGORIES.map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
@@ -442,7 +443,7 @@ function AdminGallery() {
                   value={customCategory}
                   onChange={(e) => setCustomCategory(e.target.value)}
                   required
-                  className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                  className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
                   placeholder="Enter custom category"
                 />
               </div>
@@ -455,14 +456,14 @@ function AdminGallery() {
                 ref={fileInputRef}
                 accept="image/*"
                 required
-                className="w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+                className="w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer"
               />
             </div>
 
             <button 
               type="submit" 
               disabled={uploading}
-              className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {uploading ? (
                 <><Loader2 className="w-5 h-5 animate-spin" /> Uploading...</>
@@ -477,12 +478,12 @@ function AdminGallery() {
       <div className="lg:col-span-2">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <ImageIcon className="w-5 h-5 text-blue-600" /> Manage Existing Photos
+            <ImageIcon className="w-5 h-5 text-emerald-600" /> Manage Existing Photos
           </h2>
           
           {loading ? (
             <div className="flex justify-center items-center py-12">
-              <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
+              <Loader2 className="w-8 h-8 text-emerald-600 animate-spin" />
             </div>
           ) : images.length === 0 ? (
             <div className="text-center py-12 bg-gray-50 rounded-xl border border-dashed border-gray-300">
@@ -503,7 +504,7 @@ function AdminGallery() {
                   <div className="p-4 flex flex-col justify-between flex-grow">
                     <div className="mb-4">
                       <p className="text-gray-900 font-semibold line-clamp-2">{img.title || "Untitled"}</p>
-                      <span className="inline-block mt-1.5 px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-medium border border-blue-100">
+                      <span className="inline-block mt-1.5 px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[10px] font-medium border border-emerald-100">
                         {img.category || "General"}
                       </span>
                     </div>
@@ -576,8 +577,8 @@ export default function AdminDashboardPage() {
     return (
       <div className="min-h-screen pt-32 pb-12 bg-gray-50 flex flex-col items-center">
         <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 max-w-md w-full">
-          <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Lock className="w-8 h-8 text-blue-600" />
+          <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Lock className="w-8 h-8 text-emerald-600" />
           </div>
           <h2 className="text-2xl font-bold text-center text-gray-900 mb-2">Admin Access</h2>
           <p className="text-center text-gray-500 mb-8">Enter the master password to access the portal.</p>
@@ -589,7 +590,7 @@ export default function AdminDashboardPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter Admin Password"
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none transition-all text-center tracking-widest"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 outline-none transition-all text-center tracking-widest"
                 required
               />
               {loginError && <p className="text-red-500 text-sm mt-2 text-center">{loginError}</p>}
@@ -631,14 +632,14 @@ export default function AdminDashboardPage() {
         <div className="flex flex-wrap gap-4 mb-8 border-b border-gray-200 pb-4">
           <button 
             onClick={() => setActiveTab('services')}
-            className={`px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${activeTab === 'services' ? 'bg-blue-600 text-white shadow-md' : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'}`}
+            className={`px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${activeTab === 'services' ? 'bg-emerald-600 text-white shadow-md' : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'}`}
           >
             <Briefcase className="w-5 h-5" />
             Services Management
           </button>
           <button 
             onClick={() => setActiveTab('gallery')}
-            className={`px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${activeTab === 'gallery' ? 'bg-blue-600 text-white shadow-md' : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'}`}
+            className={`px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${activeTab === 'gallery' ? 'bg-emerald-600 text-white shadow-md' : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'}`}
           >
             <ImageIcon className="w-5 h-5" />
             Gallery Management

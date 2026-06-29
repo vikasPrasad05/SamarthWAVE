@@ -1,6 +1,6 @@
 "use client";
 
-import { Building2, Utensils, Zap, Users, ShieldCheck, Briefcase, Wrench, Settings, Star, Loader2 } from "lucide-react";
+import { Building2, Utensils, Zap, Users, ShieldCheck, Briefcase, Wrench, Settings, Star, Loader2, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -15,7 +15,8 @@ const iconMap: Record<string, React.ReactNode> = {
   Building2: <Building2 className="w-8 h-8 text-white" />,
   Wrench: <Wrench className="w-8 h-8 text-white" />,
   Settings: <Settings className="w-8 h-8 text-white" />,
-  Star: <Star className="w-8 h-8 text-white" />
+  Star: <Star className="w-8 h-8 text-white" />,
+  Sparkles: <Sparkles className="w-8 h-8 text-white" />
 };
 
 type ServiceItem = {
@@ -70,13 +71,13 @@ export default function Services() {
         {/* Core Services */}
         <div className="mb-20">
           <div className="text-center mb-12">
-            <span className="text-blue-600 font-semibold tracking-wider uppercase text-sm block mb-2">What We Offer</span>
+            <span className="text-emerald-600 font-semibold tracking-wider uppercase text-sm block mb-2">What We Offer</span>
             <h2 className="text-3xl font-bold text-gray-900">Integrated Facility Solutions</h2>
           </div>
           
           {loading ? (
             <div className="flex justify-center py-20">
-              <Loader2 className="w-10 h-10 animate-spin text-blue-600" />
+              <Loader2 className="w-10 h-10 animate-spin text-emerald-600" />
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -103,7 +104,7 @@ export default function Services() {
                       </div>
                       <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
                       <p className="text-gray-300 leading-relaxed mb-6 flex-grow">{service.description}</p>
-                      <Link href="/contact-us" className="text-blue-400 font-medium hover:text-blue-300 flex items-center gap-2 mt-auto">
+                      <Link href="/contact-us" className="text-emerald-400 font-medium hover:text-emerald-300 flex items-center gap-2 mt-auto">
                         Enquire Now
                       </Link>
                     </div>
@@ -115,12 +116,12 @@ export default function Services() {
         </div>
 
         {/* Call to action */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-8 md:p-12 shadow-xl text-white text-center">
+        <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-8 md:p-12 shadow-xl text-white text-center">
           <h2 className="text-3xl font-bold mb-6">Need a Custom Solution?</h2>
-          <p className="text-lg text-blue-100 max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-emerald-100 max-w-2xl mx-auto mb-8">
             Every business is unique. Contact us today to discuss how we can tailor our services to match your specific operational requirements.
           </p>
-          <Link href="/contact-us" className="inline-block px-8 py-4 bg-white text-blue-600 rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg">
+          <Link href="/contact-us" className="inline-block px-8 py-4 bg-white text-emerald-600 rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg">
             Discuss Your Requirements
           </Link>
         </div>
