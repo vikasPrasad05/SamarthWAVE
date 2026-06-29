@@ -43,6 +43,9 @@ const CATEGORIES = [
   "Carpet Cleaning",
   "Manpower Supply",
   "Facility Management & MEP",
+  "Pest Control",
+  "Waterless Carwash",
+  "Deep Cleaning Service",
   "Other"
 ];
 
