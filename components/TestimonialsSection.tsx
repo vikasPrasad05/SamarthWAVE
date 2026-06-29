@@ -2,15 +2,39 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Star, X, Check, MessageSquare, StarHalf } from "lucide-react";
+import { Star, X, Check, MessageSquare } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 interface Review {
   id: string;
   name: string;
+  email?: string;
   text: string;
   rating: number;
   avatar: string;
   time: string;
+}
+
+function getTimeAgo(date: Date): string {
+  const now = new Date();
+  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+
+  if (diffInSeconds < 60) return "Just now";
+  
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  if (diffInMinutes < 60) return `${diffInMinutes} minute${diffInMinutes > 1 ? "s" : ""} ago`;
+
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  if (diffInHours < 24) return `${diffInHours} hour${diffInHours > 1 ? "s" : ""} ago`;
+
+  const diffInDays = Math.floor(diffInHours / 24);
+  if (diffInDays < 30) return `${diffInDays} day${diffInDays > 1 ? "s" : ""} ago`;
+
+  const diffInMonths = Math.floor(diffInDays / 30);
+  if (diffInMonths < 12) return `${diffInMonths} month${diffInMonths > 1 ? "s" : ""} ago`;
+
+  const diffInYears = Math.floor(diffInMonths / 12);
+  return `${diffInYears} year${diffInYears > 1 ? "s" : ""} ago`;
 }
 
 const DEFAULT_REVIEWS: Review[] = [
@@ -85,65 +109,125 @@ export default function TestimonialsSection() {
   const [showAll, setShowAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [text, setText] = useState("");
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
   const [successMsg, setSuccessMsg] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  // Load reviews from localStorage on component mount
+  // Load reviews from Supabase on component mount
   useEffect(() => {
-    const stored = localStorage.getItem("samarthwave_reviews");
-    if (stored) {
+    async function fetchReviews() {
       try {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          // Merge custom reviews at the beginning of the list
-          setReviews([...parsed, ...DEFAULT_REVIEWS]);
+        const { data, error } = await supabase
+          .from("reviews")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (error) {
+          console.error("Error fetching reviews from Supabase:", error.message);
+          return;
+        }
+
+        if (data && data.length > 0) {
+          const dbReviews: Review[] = data.map((item: any) => {
+            const createdDate = new Date(item.created_at);
+            const timeAgo = getTimeAgo(createdDate);
+
+            return {
+              id: item.id,
+              name: item.name,
+              email: item.email,
+              text: item.text,
+              rating: item.rating,
+              avatar: item.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(item.name)}&background=0D8ABC&color=fff`,
+              time: timeAgo,
+            };
+          });
+
+          // Merge custom database reviews at the beginning of the list
+          setReviews([...dbReviews, ...DEFAULT_REVIEWS]);
         }
       } catch (e) {
-        console.error("Failed to parse reviews", e);
+        console.error("Failed to load reviews from Supabase:", e);
       }
     }
+    fetchReviews();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !text.trim()) return;
-
-    const randomBg = Math.floor(Math.random() * 16777215).toString(16);
-    const newReview: Review = {
-      id: Date.now().toString(),
-      name: name.trim(),
-      text: text.trim(),
-      rating,
-      avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name.trim())}&background=${randomBg}&color=fff`,
-      time: "Just now"
-    };
-
-    const updatedCustom = [newReview];
-    const stored = localStorage.getItem("samarthwave_reviews");
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) {
-          updatedCustom.push(...parsed);
-        }
-      } catch (e) {}
+    if (!name.trim() || !email.trim() || !text.trim()) {
+      setErrorMsg("All fields are required.");
+      return;
     }
 
-    localStorage.setItem("samarthwave_reviews", JSON.stringify(updatedCustom));
-    setReviews([newReview, ...reviews]);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      setErrorMsg("Please enter a valid email address.");
+      return;
+    }
 
-    // Show success state
-    setSuccessMsg(true);
-    setName("");
-    setText("");
-    setRating(5);
+    setIsSubmitting(true);
+    setErrorMsg("");
 
-    setTimeout(() => {
-      setSuccessMsg(false);
-      setIsModalOpen(false);
-    }, 2000);
+    const randomBg = Math.floor(Math.random() * 16777215).toString(16);
+    const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name.trim())}&background=${randomBg}&color=fff`;
+
+    try {
+      const { data, error } = await supabase
+        .from("reviews")
+        .insert([
+          {
+            name: name.trim(),
+            email: email.trim(),
+            text: text.trim(),
+            rating: rating,
+            avatar: avatarUrl
+          }
+        ])
+        .select();
+
+      if (error) {
+        console.error("Error inserting review into Supabase:", error.message);
+        setErrorMsg("Failed to submit review to database. Please make sure the reviews table exists.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (data && data.length > 0) {
+        const insertedItem = data[0];
+        const newReview: Review = {
+          id: insertedItem.id,
+          name: insertedItem.name,
+          email: insertedItem.email,
+          text: insertedItem.text,
+          rating: insertedItem.rating,
+          avatar: insertedItem.avatar,
+          time: "Just now"
+        };
+        setReviews([newReview, ...reviews]);
+      }
+
+      // Show success state
+      setSuccessMsg(true);
+      setName("");
+      setEmail("");
+      setText("");
+      setRating(5);
+
+      setTimeout(() => {
+        setSuccessMsg(false);
+        setIsModalOpen(false);
+      }, 2000);
+    } catch (e) {
+      console.error("Failed to submit review:", e);
+      setErrorMsg("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const visibleReviews = showAll ? reviews : reviews.slice(0, 4);
@@ -253,6 +337,7 @@ export default function TestimonialsSection() {
                 onClick={() => {
                   setIsModalOpen(false);
                   setSuccessMsg(false);
+                  setErrorMsg("");
                 }}
                 className="text-gray-400 hover:text-gray-600 transition-colors p-1"
               >
@@ -279,10 +364,11 @@ export default function TestimonialsSection() {
                       <button
                         key={star}
                         type="button"
+                        disabled={isSubmitting}
                         onClick={() => setRating(star)}
                         onMouseEnter={() => setHoverRating(star)}
                         onMouseLeave={() => setHoverRating(0)}
-                        className="text-2xl transition-transform hover:scale-110 focus:outline-none"
+                        className="text-2xl transition-transform hover:scale-110 focus:outline-none disabled:opacity-50"
                       >
                         <Star 
                           className={`w-8 h-8 ${
@@ -304,10 +390,26 @@ export default function TestimonialsSection() {
                     id="client-name"
                     type="text"
                     required
+                    disabled={isSubmitting}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. John Doe"
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm text-gray-800"
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm text-gray-800 disabled:opacity-60"
+                  />
+                </div>
+
+                {/* Email Input */}
+                <div>
+                  <label htmlFor="client-email" className="block text-sm font-semibold text-gray-700 mb-1">Your Email</label>
+                  <input
+                    id="client-email"
+                    type="email"
+                    required
+                    disabled={isSubmitting}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="e.g. john@example.com"
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm text-gray-800 disabled:opacity-60"
                   />
                 </div>
 
@@ -317,20 +419,26 @@ export default function TestimonialsSection() {
                   <textarea
                     id="client-text"
                     required
+                    disabled={isSubmitting}
                     rows={4}
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     placeholder="Tell us about your experience..."
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm text-gray-800 resize-none"
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm text-gray-800 resize-none disabled:opacity-60"
                   ></textarea>
                 </div>
+
+                {errorMsg && (
+                  <p className="text-red-500 text-xs font-semibold mt-1">{errorMsg}</p>
+                )}
 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl transition-all shadow-md text-sm mt-2"
+                  disabled={isSubmitting}
+                  className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl transition-all shadow-md text-sm mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit Review
+                  {isSubmitting ? "Submitting..." : "Submit Review"}
                 </button>
               </form>
             )}
