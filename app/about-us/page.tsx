@@ -111,7 +111,7 @@ export default function AboutUs() {
                 <div className="w-36 h-36 md:w-44 md:h-44 relative rounded-2xl overflow-hidden shadow-sm border-[4px] border-white z-10">
                   <Image 
                     src="/client1.jpeg" 
-                    alt="Vikas Prasad" 
+                    alt="Dippak Chauudhari" 
                     fill
                     className="object-cover"
                   />
@@ -120,7 +120,7 @@ export default function AboutUs() {
               </div>
               <div className="flex-grow text-center md:text-left flex flex-col justify-between h-full">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-1">Vikas Prasad</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-1">Dippak Chauudhari</h3>
                   <span className="text-emerald-600 font-semibold tracking-wider text-xs uppercase mb-4 block">Founder & Director</span>
                   <p className="text-gray-600 text-sm leading-relaxed mb-6 font-light">
                     Over 16 years of consolidated experience in hospitality and facility management. Under his leadership, SAMARTHWAVE has grown into a trusted partner for premier corporate clients across the industry.
