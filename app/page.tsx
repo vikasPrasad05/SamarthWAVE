@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Star, MapPin, CheckCircle, ShieldCheck, Clock, Sparkles } from "lucide-react";
 import HeroSlider from "@/components/HeroSlider";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 export default function Home() {
   return (
@@ -241,84 +242,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-[#fafafa]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-orange-400 font-medium tracking-wide text-sm block mb-3">Our Testimonials</span>
-            <h2 className="text-3xl md:text-5xl font-serif text-gray-900">What Our Clients Say</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                name: "Rahul Desai",
-                text: "SAMARTHWAVE has completely transformed our office housekeeping. Their staff is highly professional and the cleaning standards are exceptional.",
-                avatar: "https://ui-avatars.com/api/?name=Rahul+Desai&background=random",
-                time: "2 months ago"
-              },
-              {
-                name: "Priya Sharma",
-                text: "The pantry management service they provide is seamless. Our employees are very happy with the hygienic and prompt service every day.",
-                avatar: "https://ui-avatars.com/api/?name=Priya+Sharma&background=random",
-                time: "5 months ago"
-              },
-              {
-                name: "Amit Patel",
-                text: "Their technical and MEP services are top-notch. Quick response times and knowledgeable technicians ensure our facility runs without a hitch.",
-                avatar: "https://ui-avatars.com/api/?name=Amit+Patel&background=0D8ABC&color=fff",
-                time: "1 year ago"
-              },
-              {
-                name: "Neha Singh",
-                text: "We partnered with them for manpower supply and facility management. It's been a flawless experience. Truly a reliable partner.",
-                avatar: "https://ui-avatars.com/api/?name=Neha+Singh&background=random",
-                time: "1 year ago"
-              }
-            ].map((review, idx) => (
-              <div key={idx} className="flex flex-col gap-6">
-                {/* Review Bubble */}
-                <div className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] relative h-[150px] flex flex-col">
-                  {/* Arrow Pointer */}
-                  <div className="absolute -bottom-2 left-8 w-4 h-4 bg-white shadow-[-2px_2px_2px_rgba(0,0,0,0.01)] transform -rotate-45" style={{ zIndex: 1, clipPath: 'polygon(0 0, 0% 100%, 100% 100%)' }}></div>
-                  
-                  {/* Top Row: Stars */}
-                  <div className="flex justify-between items-start">
-                    <div className="flex items-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 text-[#fbbc05] fill-[#fbbc05]" />
-                      ))}
-                      <div className="ml-1 bg-emerald-500 rounded-full w-3.5 h-3.5 flex items-center justify-center">
-                        <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Review Text */}
-                  <p className="text-gray-800 text-[13px] font-medium mt-4 leading-relaxed line-clamp-3">
-                    {review.text}
-                  </p>
-                </div>
-                
-                {/* User Info */}
-                <div className="flex items-center gap-3 px-4 relative z-10">
-                  <div className="relative">
-                    <Image src={review.avatar} alt={review.name} width={40} height={40} className="rounded-full object-cover shadow-sm border border-gray-100" />
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-orange-500 rounded-full border-2 border-white flex items-center justify-center">
-                      <Star className="w-2 h-2 text-white fill-white" />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 text-sm leading-tight">{review.name}</h4>
-                    <p className="text-gray-500 text-[11px] mt-0.5">{review.time}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
     </div>
   );
 }
